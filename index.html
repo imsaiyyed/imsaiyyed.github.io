@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Emotion Analysis</title>
+
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.2/Chart.js"></script>
+  <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+
+  <script defer src="face-api.min.js"></script>
+  <script defer src="script.js"></script>
+  <style>
+.main-header {
+    background: #6548de;
+    padding: 20px 0;
+    margin-bottom: 20px;
+}
+.outer-border-block{
+  border: 1px solid #e0e0e0;
+  padding: 20px;
+  border-radius: 4px;
+}
+.chart-block {
+    margin-bottom: 20px;
+}
+.card-header.card-bg {
+    background: #de48dc;
+}
+.cart-view {
+    margin-bottom: 20px;
+}
+.cart-value {
+    font-size: 20px;
+    font-weight: 700;
+    color: #353535;
+}
+.video-block img {
+    min-height: 310px;
+    height: 310px;
+}
+
+  </style>
+
+</head>
+
+<body>
+
+  <div class="main-header col-sm-12 text-center">
+    <div class="container">
+      <h2 class="text-center text-white">Realtime Emotion Analytics</h2>
+    </div>
+  </div>
+
+  <div class="container">
+    <div class="row">
+      <div class="col-md-6">
+          <div class="cart-view ">
+            <div class="row">
+              <div class="col-sm-6">
+                  <div class="card">
+                    <div class="card-header card-bg text-white text-center">Face Count</div>
+                    <div class="card-body cart-value text-center">          
+                      <label id="faceCount">0</label>
+                    </div>
+                  </div>
+              </div>
+            
+              <div class="col-sm-6">
+                  <div class="card">
+                    <div class="card-header card-bg text-white text-center">Confidence Score</div>
+                    <div class="card-body cart-value text-center">          
+                      <label id="confidence">0%</label>
+                    </div>
+                  </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="outer-border-block col-sm-12 video-block">
+            <!-- <video id="video" crossorigin="anonymous" src="http://192.168.43.1:8080/video" width="500" height="400" /> -->
+            <img id="video" crossorigin="anonymous" src="http://192.168.43.1:8080/video" width="500" height="400" />
+            <!-- <img id="video" crossorigin="anonymous" src="images.jpg" width="500" height="400" /> -->
+          </div>
+          
+        
+      </div>
+     
+      <div class="col-md-6">
+         
+
+          <div class="chart-block outer-border-block">
+            <canvas id='pieChart' width="500" height="200"> </canvas>
+          </div>
+
+          <div class="chart-block outer-border-block">
+            <canvas id="lineChart" height="200" width="500"></canvas>
+          </div>
+
+          <!-- <div class="row">
+          </div> -->
+      </div>
+
+    </div>
+  </div>
+
+  <!-- <canvas id="canvas"></canvas> -->
+</body>
+
+</html>
