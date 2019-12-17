@@ -662,10 +662,11 @@ function startPlotting() {
 
     chartEmotions.forEach((val, index) => {
       let avg = 0;
-      emotionDetails[val]['temp'].forEach((val) => {
-        avg = avg + val;
-      })
-      avg = avg / emotionDetails[val]['temp'].length;
+      let tempLen=emotionDetails[val]['temp'].length;
+      for(let i=(tempLen-1);i>=(tempLen=5);i--){
+        avg = avg+emotionDetails[val]['temp'][i];
+      }
+      avg = avg / 5;
       if (emotionDetails[val]['avg'].length > 12) {
         emotionDetails[val]['avg'].shift();
       }
