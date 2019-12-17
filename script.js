@@ -398,18 +398,18 @@ document.getElementById('pieChart').onclick = function (evt) {
     switch (currentLineChart) {
       case 'neutral':
         lineChartEmogi.src = 'confused.png';
-        chartLabel.innerHTML = 'Real-Time Neutral Index';
+        chartLabel.innerHTML = 'LIVE Neutral Pulse';
         break;
       case 'happy':
         lineChartEmogi.src = 'happy.png';
-        chartLabel.innerHTML = 'Real-Time Happiness Index';
+        chartLabel.innerHTML = 'LIVE Happiness Pulse';
         break;
       // case 'surprised':
       //   lineChartEmogi.src = 'surprised.png';
       //   break;
       default:
         lineChartEmogi.src = 'sad.png';
-        chartLabel.innerHTML = 'Real-Time Sadness Index';
+        chartLabel.innerHTML = 'LIVE Sadness Pulse';
         break;
     }
     lineChart.data.datasets.forEach((dataset) => {
