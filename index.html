@@ -8,105 +8,279 @@
   <title>Emotion Analysis</title>
 
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,600,700&display=swap" rel="stylesheet">
+
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.2/Chart.js"></script>
+  <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.2/Chart.js"></script> -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.4.0/Chart.bundle.min.js"></script>
+
   <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
 
   <script defer src="face-api.min.js"></script>
   <script defer src="script.js"></script>
   <style>
-.main-header {
-    background: #6548de;
-    padding: 20px 0;
-    margin-bottom: 20px;
-}
-.outer-border-block{
-  border: 1px solid #e0e0e0;
-  padding: 20px;
-  border-radius: 4px;
-}
-.chart-block {
-    margin-bottom: 20px;
-}
-.card-header.card-bg {
-    background: #de48dc;
-}
-.cart-view {
-    margin-bottom: 20px;
-}
-.cart-value {
-    font-size: 20px;
-    font-weight: 700;
-    color: #353535;
-}
-.video-block img {
-    min-height: 310px;
-    height: 310px;
-}
+    body {
+      font-family: 'Open Sans', sans-serif;
+      font-size: 14px !important;
+      background-color: #33a5ca;
+      background-image: linear-gradient(#4dc7f6, #0c527b);
+      height: 100%;
+      color: #353535 !important;
+      margin: 0;
+      background-repeat: no-repeat;
+      background-attachment: fixed;
+    }
+    .text-lightGray{
+      color: #686868;
+    }
 
+    .bg-white {
+      background: #fff;
+    }
+
+    .card h5 {
+      letter-spacing: 1.2px;
+      font-size: 16px;
+      font-weight: 700;
+    }
+
+    .tech-stack label {
+      background: #f2f2f2;
+      color: #00448a;
+      border-radius: 4px;
+      padding: 4px 18px;
+      font-weight: 600;
+    }
+
+    label#faceCount {
+      position: absolute;
+      z-index: 999;
+      color: #fff;
+    }
+
+    .page-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 5px solid #00448a;
+    }
+
+    .page-header h2 {
+      color: #00448a;
+    }
+
+    /*.outer-border-block {
+      border: 1px solid #e0e0e0;
+      padding: 20px;
+      border-radius: 4px;
+    }*/
+
+    .chart-block {
+      margin-bottom: 20px;
+    }
+
+    .card-header.card-bg {
+      background: #de48dc;
+    }
+
+    .cart-view {
+      margin-bottom: 20px;
+    }
+
+    .cart-value {
+      font-size: 20px;
+      font-weight: 700;
+      color: #353535;
+    }
+
+    .video-block img {
+      height: 285px;
+    }
+
+    .case-one h6 span.bullet {
+      width: 10px;
+      height: 10px;
+      background: #00448a;
+      display: inline-block;
+      border-radius: 30px;
+      margin-right: 14px
+    }
+    .case-one h6 {
+        font-weight: 600;
+    }
+    .case-one {
+    border-bottom: 1px solid #d9d9d9;
+}
+.case-one:last-child {
+    border: none;
+}
+.icon-structure.d-flex {
+  position: absolute;
+  right: 0;
+  top: 0;
+}
+.icon-structure ul li {
+    /* display: inline-block; */
+    display: block;
+    cursor: pointer;
+}
+.use-cases {
+    overflow-y: auto;
+    min-height: 225px;
+    height: 225px;
+}
+.pie-chartBlock{
+  height: 303px;;
+}
+@media(max-width:530px){
+  .page-header {
+    display: block;
+    align-items: normal;
+    justify-content: normal;
+    text-align: center;
+}
+.page-header h2 {
+    color: #00448a;
+    padding: 24px 0;
+}
+}
   </style>
 
 </head>
 
 <body>
 
-  <div class="main-header col-sm-12 text-center">
-    <div class="container">
-      <h2 class="text-center text-white">Realtime Emotion Analytics</h2>
+  <div class="col-md-12 p-0">
+    <div class="row no-gutters">
+      <div class="page-header bg-white px-3 py-2 mb-3 col-sm-12">
+        <img src="salesforce-logo.png" alt="sales-force logo" width="200px;">
+        <h2 class="text-center"> Happiness Index</h2>
+        <img src="Eternus-black logo.png" alt="eternus logo" width="200px;">
+      </div>
     </div>
   </div>
 
-  <div class="container">
+  <div class="container-fluid">
     <div class="row">
-      <div class="col-md-6">
-          <div class="cart-view ">
-            <div class="row">
-              <div class="col-sm-6">
-                  <div class="card">
-                    <div class="card-header card-bg text-white text-center">Face Count</div>
-                    <div class="card-body cart-value text-center">          
-                      <label id="faceCount">0</label>
-                    </div>
+      <div class="col-md-12">
+        <div class="row no-gutters">
+          <div class="col-md-6 col-lg-5">
+            <!-- <div class="cart-view ">
+                <div class="row">
+                  <div class="col-sm-6">
+                      <div class="card">
+                        <div class="card-header card-bg text-white text-center">Face Count</div>
+                        <div class="card-body cart-value text-center">          
+                          <label id="faceCount">0</label>
+                        </div>
+                      </div>
                   </div>
-              </div>
-            
-              <div class="col-sm-6">
-                  <div class="card">
-                    <div class="card-header card-bg text-white text-center">Confidence Score</div>
-                    <div class="card-body cart-value text-center">          
-                      <label id="confidence">0%</label>
-                    </div>
+                
+                  <div class="col-sm-6">
+                      <div class="card">
+                        <div class="card-header card-bg text-white text-center">Confidence Score</div>
+                        <div class="card-body cart-value text-center">          
+                          <label id="confidence">0%</label>
+                        </div>
+                      </div>
                   </div>
+                </div>
+              </div>  -->
+            <div class="card p-2 mb-2 video-block bg-white">
+              <label id="faceCount">0</label>
+              <!-- <video id="video" crossorigin="anonymous" src="http://192.168.1.4:8080/video" width="500" height="400" /> -->
+              <img id="video" crossorigin="anonymous" src="http://192.168.100.98:8080/video" width="100%" />
+              <!-- <img id="video" crossorigin="anonymous" src="sep18_18_200273314-008.jpg" width="500" /> -->
+            </div>
+          </div>
+          <div class="col-md-6 col-lg-3 px-lg-2 pl-md-2 pr-md-0">
+            <div class="card p-2 mb-2 bg-white chart-block pie-chartBlock">
+                <h5 class="mb-3">Aggregated Index</h5>
+                <div class="icon-structure d-flex justify-content-center">
+                  <ul class="d-inline p-0 m-0">
+                    <li class="p-2"><img onclick="changeLineChart('happy')" src="happy.png"></li>
+                    <li class="p-2"><img onclick="changeLineChart('unhappy')" src="sad.png"></li>
+                    <li class="p-2"><img onclick="changeLineChart('neutral')" src="confused.png"></li>
+                    <!-- <li class="p-2"><img onclick="changeLineChart('surprised')" src="surprised.png"></li> -->
+                  </ul>
+                </div>
+                <div style="width:220px;height:220px;text-align: center;margin: 0 auto;">
+                  <canvas id='pieChart'> </canvas>
+                </div>
+            </div>
+          </div>
+          <div class="col-md-12 col-lg-4">
+            <div class="card p-2 mb-2 bg-white chart-block">
+                <h5 class="mb-3">Periodic Aggregated Index</h5>
+              <div style="width:100%;height:248px;text-align: center;margin: 0 auto;">
+                <canvas id="timeChart" width="100%" height="90%"></canvas>
               </div>
             </div>
           </div>
-
-          <div class="outer-border-block col-sm-12 video-block">
-            <!-- <video id="video" crossorigin="anonymous" src="http://192.168.43.1:8080/video" width="500" height="400" /> -->
-            <img id="video" crossorigin="anonymous" src="http://192.168.43.1:8080/video" width="500" height="400" />
-            <!-- <img id="video" crossorigin="anonymous" src="images.jpg" width="500" height="400" /> -->
-          </div>
-          
-        
-      </div>
-     
-      <div class="col-md-6">
-         
-
-          <div class="chart-block outer-border-block">
-            <canvas id='pieChart' width="500" height="200"> </canvas>
-          </div>
-
-          <div class="chart-block outer-border-block">
-            <canvas id="lineChart" height="200" width="500"></canvas>
-          </div>
-
-          <!-- <div class="row">
-          </div> -->
+        </div>
       </div>
 
+      <div class="col-md-12">
+        <div class="row no-gutters">
+          <div class="col-md-12 col-lg-5">
+            <div class="row no-gutters">
+              <div class="col-md-12">
+                <div class="card p-2 mb-2 bg-white use-cases">
+                  <h5 class="mb-3">Use Cases</h5>
+                  <div class="case-one d-flex align-items-center justify-content-start pt-2 py-3">
+                    <!-- <h6><span class="bullet"></span> Employee Sentiment Analysis</h6> -->
+                    <img src="training.png" alt="Heroku logo" width="40px;" class="mr-2"><p class="pl-4 text-lightGray mb-2">  Analyze the sentiments of employees by linking the orgnization's CCTV feed to the system.</p>
+                  </div>
+                  <div class="case-one d-flex align-items-center justify-content-start pt-2 py-3">
+                    <!-- <h6><span class="bullet"></span>Audience Engagement Analysis at Events / Conferences</h6> -->
+                    <img src="audience.png" alt="Heroku logo" width="40px;" class="mr-2"> 
+                    <p class="pl-4 text-lightGray mb-2"> Detect audience's engagement level by reading their sentiments in real-time.</p>
+                  </div>
+                    <!-- <div class="case-one  pt-3">
+                      <h6><span class="bullet"></span>Audience Engagement Analysis at Event / Conferences</h6>
+                      <p class="pl-4 text-lightGray">Detect audience's engagement level by reading the sentiment of the audience.</p>
+                    </div> -->
+                </div>
+              </div>
+              <div class="col-md-12">
+                <div class="card p-2 mb-2 bg-white">
+                  <h5 class="mb-3">Technology Stack</h5>
+                  <div class="tech-stack">
+                    <label class="mr-2"><img src="salesforce.png" alt="Heroku logo" width="60px;"></label>
+                    <label class="mr-2"><img src="salesforce-einstein.png" alt="salesforce-einstein logo" width="60px;"></label>
+                    <label class="mr-2"><img src="LWC.png" alt="LWC logo" width="60px;"></label>
+                    <label class="mr-2"><img src="Heroku.png" alt="Heroku logo" width="60px;"></label>
+                    <label><img src="Tensorflow.png" alt="Tensorflow logo" width="60px;"></label>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-6 col-lg-3 px-lg-2 pl-md-2 pr-md-0">
+            <div class="card p-2 mb-2 bg-white chart-block px-lg-2 pl-md-2 pr-md-0">
+                <h5 class="mb-3">Composite Happiness Index</h5>
+              <div style="width:100%; height:308px; text-align: center;margin: 0 auto;">
+                <canvas id="compoundChart" height="123px" width="270px"></canvas>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-12 col-lg-4">
+            <div class="card p-2 mb-2 bg-white chart-block">
+                <h5 class="mb-3" id="realtimeChartLabel">Real-Time Happiness Index</h5>
+                <div class="icon-structure d-flex justify-content-center">
+                    <ul class="d-inline p-0 m-0">
+                      <li class="p-2 mb-2"><img id="lineChartEmogi" src="happy.png"></li>
+                    </ul>
+                  </div>
+              <div style="width:100%; height:308px; text-align: center;margin: 0 auto;">
+                <canvas id="lineChart" height="123px" width="300px"></canvas>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 
